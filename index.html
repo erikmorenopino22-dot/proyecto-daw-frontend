@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compra y vende artículos de segunda mano: ropa, zapatos, electrónica, libros y mucho más.">
+  <title>ReMarket · Compra y vende de segunda mano</title>
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+
+  <!-- Fuente del prototipo de Figma -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+  <!-- Hojas de estilo (orden: variables > base > layout > componentes > páginas) -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor cabecera__contenido">
+      <a href="index.html" class="logo" aria-label="ReMarket, ir al inicio">
+        <span class="logo__icono" aria-hidden="true">R</span>
+        <span>ReMarket</span>
+      </a>
+      <form class="buscador" role="search" action="index.html">
+        <label for="busqueda" class="visualmente-oculto">Buscar artículos</label>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="busqueda" name="q" placeholder="Buscar artículos, marcas...">
+      </form>
+
+      <button class="boton-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <nav class="nav" id="menu-principal" aria-label="Menú principal">
+        <ul class="nav__lista">
+          <li><a class="nav__enlace" href="index.html" aria-current="page">Inicio</a></li>
+          <li><a class="nav__enlace" href="pages/login.html">Iniciar sesión</a></li>
+          <li><a class="nav__enlace" href="pages/registro.html">Registrarse</a></li>
+          <li><a class="nav__enlace nav__enlace--destacado" href="pages/crear.html">+ Publicar artículo</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <section class="inicio__cabecera" aria-labelledby="titulo-inicio">
+      <h1 class="inicio__titulo" id="titulo-inicio">Descubre artículos de segunda mano</h1>
+      <p class="inicio__subtitulo">Millones de artículos únicos te esperan.</p>
+
+      <div class="pestanas" role="group" aria-label="Tipo de listado">
+        <button class="pestana" type="button" data-pestana="para-ti" aria-pressed="true">Para ti</button>
+        <button class="pestana" type="button" data-pestana="siguiendo" aria-pressed="false">Siguiendo</button>
+      </div>
+
+      <nav aria-label="Categorías">
+        <ul class="chips" id="filtro-categorias">
+          <!-- Las categorías se crean con JS a partir de mockData.js -->
+        </ul>
+      </nav>
+    </section>
+
+    <section aria-labelledby="titulo-articulos">
+      <h2 id="titulo-articulos" class="visualmente-oculto">Artículos en venta</h2>
+      <div class="inicio__barra">
+        <p id="contador-articulos" aria-live="polite">Cargando artículos...</p>
+        <label for="orden" class="visualmente-oculto">Ordenar por</label>
+        <select id="orden" class="input">
+          <option value="recientes">Más recientes</option>
+          <option value="precio-asc">Precio: de menor a mayor</option>
+          <option value="precio-desc">Precio: de mayor a menor</option>
+          <option value="likes">Más populares</option>
+        </select>
+      </div>
+
+      <div class="grid-articulos" id="lista-articulos">
+        <noscript><p>Activa JavaScript para ver los artículos.</p></noscript>
+      </div>
+
+      <div class="sin-resultados" id="sin-resultados" hidden>
+        <p class="sin-resultados__titulo">No hay artículos que coincidan con tu búsqueda</p>
+        <p>Prueba con otras palabras o quita los filtros.</p>
+        <button class="boton boton--secundario" type="button" id="limpiar-filtros">Quitar filtros</button>
+      </div>
+    <!-- Plantilla de tarjeta: JS la clona por cada producto de mockData.js -->
+    <template id="plantilla-tarjeta">
+      <article class="tarjeta">
+        <div class="tarjeta__media">
+          <img class="tarjeta__imagen" src="assets/img/sin-foto.svg" alt="" width="400" height="530" loading="lazy">
+          <span class="tarjeta__etiqueta" hidden></span>
+          <button class="tarjeta__favorito" type="button" aria-pressed="false" aria-label="Guardar en favoritos">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+        <div class="tarjeta__cuerpo">
+          <h3 class="tarjeta__titulo"><a href="#"></a></h3>
+          <p class="tarjeta__info"></p>
+          <div class="tarjeta__pie">
+            <p class="tarjeta__precio"></p>
+            <p class="tarjeta__likes"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <span class="tarjeta__num-likes"></span></p>
+          </div>
+        </div>
+      </article>
+    </template>
+    </section>
+
+    <aside class="banner-vender" aria-labelledby="titulo-vender">
+      <div>
+        <h2 id="titulo-vender">¿Tienes cosas que ya no usas?</h2>
+        <p>Súbelas en un par de minutos. Solo cobramos un 5 % cuando vendes.</p>
+      </div>
+      <a class="boton boton--primario" href="pages/crear.html">Vender ahora</a>
+    </aside>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie__contenido">
+      <div>
+        <a href="index.html" class="logo">
+          <span class="logo__icono" aria-hidden="true">R</span>
+          <span>ReMarket</span>
+        </a>
+        <p>Compra, vende y da nueva vida a lo que ya no usas.</p>
+      </div>
+      <nav aria-label="Enlaces del pie">
+        <h2 class="pie__titulo">ReMarket</h2>
+        <ul class="pie__lista">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="pages/crear.html">Vender un artículo</a></li>
+          <li><a href="pages/registro.html">Crear cuenta</a></li>
+        </ul>
+      </nav>
+      <section>
+        <h2 class="pie__titulo">Ayuda</h2>
+        <ul class="pie__lista">
+          <li><a href="#">Cómo funciona</a></li>
+          <li><a href="#">Términos de uso</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </section>
+    </div>
+    <p class="pie__legal">© 2026 ReMarket · Proyecto Interdisciplinar 2 · Erik Moreno Pino</p>
+  </footer>
+
+  <!-- Scripts (con defer se ejecutan cuando el HTML ya está cargado) -->
+  <script src="js/modal.js" defer></script>
+  <script src="js/menu.js" defer></script>
+  <script src="js/mockData.js" defer></script>
+  <script src="js/productos.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Inicia sesión en ReMarket para comprar y vender artículos de segunda mano.">
+  <title>Iniciar sesión · ReMarket</title>
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png">
+
+  <!-- Fuente del prototipo de Figma -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+  <!-- Hojas de estilo (orden: variables > base > layout > componentes > páginas) -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor cabecera__contenido">
+      <a href="../index.html" class="logo" aria-label="ReMarket, ir al inicio">
+        <span class="logo__icono" aria-hidden="true">R</span>
+        <span>ReMarket</span>
+      </a>
+
+      <button class="boton-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <nav class="nav" id="menu-principal" aria-label="Menú principal">
+        <ul class="nav__lista">
+          <li><a class="nav__enlace" href="../index.html">Inicio</a></li>
+          <li><a class="nav__enlace" href="login.html" aria-current="page">Iniciar sesión</a></li>
+          <li><a class="nav__enlace" href="registro.html">Registrarse</a></li>
+          <li><a class="nav__enlace nav__enlace--destacado" href="crear.html">+ Publicar artículo</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor acceso">
+      <aside class="acceso__lateral" aria-label="Ventajas de ReMarket">
+        <h2>Da una segunda vida a lo que ya no usas</h2>
+        <ul>
+          <li>Publica gratis en un par de minutos</li>
+          <li>Solo un 5 % de comisión cuando vendes</li>
+          <li>Compra protegida y valoraciones de vendedores</li>
+        </ul>
+      </aside>
+
+      <section class="acceso__tarjeta" aria-labelledby="titulo-login">
+        <h1 class="acceso__titulo" id="titulo-login">Bienvenido/a de nuevo</h1>
+        <p class="acceso__texto">Inicia sesión para comprar, vender y hablar con otros usuarios.</p>
+
+        <nav class="selector" aria-label="Elegir acceso">
+          <a href="login.html" aria-current="page">Iniciar sesión</a>
+          <a href="registro.html">Registrarse</a>
+        </nav>
+
+        <form class="formulario" id="form-login" action="../index.html" method="post" novalidate>
+          <div class="campo">
+            <label class="campo__etiqueta" for="login-email">Correo electrónico</label>
+            <input class="input" type="email" id="login-email" name="email" placeholder="tu@email.com" autocomplete="email" required>
+            <p class="campo__error" id="error-login-email" aria-live="polite"></p>
+          </div>
+
+          <div class="campo">
+            <div class="formulario__fila-etiqueta">
+              <label class="campo__etiqueta" for="login-password">Contraseña</label>
+              <button class="enlace" type="button" id="olvide-password">¿La olvidaste?</button>
+            </div>
+            <div class="input-grupo">
+              <input class="input" type="password" id="login-password" name="password" placeholder="Mínimo 8 caracteres" autocomplete="current-password" minlength="8" required>
+              <button class="input-grupo__boton" type="button" aria-label="Mostrar contraseña">Ver</button>
+            </div>
+            <p class="campo__error" id="error-login-password" aria-live="polite"></p>
+          </div>
+
+          <label class="casilla">
+            <input type="checkbox" name="recordar">
+            <span>Recordarme en este dispositivo</span>
+          </label>
+
+          <button class="boton boton--primario boton--bloque" type="submit">Iniciar sesión</button>
+        </form>
+
+        <p class="separador">o continúa con</p>
+
+        <div class="acceso__sociales">
+          <button class="boton boton--secundario boton-social" type="button">Google</button>
+          <button class="boton boton--oscuro boton-social" type="button">Apple</button>
+        </div>
+
+        <p class="acceso__legal">Al continuar, aceptas nuestros <a href="#">Términos de uso</a> y la <a href="#">Política de privacidad</a>.</p>
+      </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie__contenido">
+      <div>
+        <a href="../index.html" class="logo">
+          <span class="logo__icono" aria-hidden="true">R</span>
+          <span>ReMarket</span>
+        </a>
+        <p>Compra, vende y da nueva vida a lo que ya no usas.</p>
+      </div>
+      <nav aria-label="Enlaces del pie">
+        <h2 class="pie__titulo">ReMarket</h2>
+        <ul class="pie__lista">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="crear.html">Vender un artículo</a></li>
+          <li><a href="registro.html">Crear cuenta</a></li>
+        </ul>
+      </nav>
+      <section>
+        <h2 class="pie__titulo">Ayuda</h2>
+        <ul class="pie__lista">
+          <li><a href="#">Cómo funciona</a></li>
+          <li><a href="#">Términos de uso</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </section>
+    </div>
+    <p class="pie__legal">© 2026 ReMarket · Proyecto Interdisciplinar 2 · Erik Moreno Pino</p>
+  </footer>
+
+  <!-- Scripts (con defer se ejecutan cuando el HTML ya está cargado) -->
+  <script src="../js/modal.js" defer></script>
+  <script src="../js/menu.js" defer></script>
+  <script src="../js/mockData.js" defer></script>
+  <script src="../js/validaciones.js" defer></script>
+  <script src="../js/login.js" defer></script>
+</body>
+</html>

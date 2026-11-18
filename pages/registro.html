@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Crea tu cuenta gratis en ReMarket.">
+  <title>Crear cuenta · ReMarket</title>
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png">
+
+  <!-- Fuente del prototipo de Figma -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+  <!-- Hojas de estilo (orden: variables > base > layout > componentes > páginas) -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor cabecera__contenido">
+      <a href="../index.html" class="logo" aria-label="ReMarket, ir al inicio">
+        <span class="logo__icono" aria-hidden="true">R</span>
+        <span>ReMarket</span>
+      </a>
+
+      <button class="boton-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <nav class="nav" id="menu-principal" aria-label="Menú principal">
+        <ul class="nav__lista">
+          <li><a class="nav__enlace" href="../index.html">Inicio</a></li>
+          <li><a class="nav__enlace" href="login.html">Iniciar sesión</a></li>
+          <li><a class="nav__enlace" href="registro.html" aria-current="page">Registrarse</a></li>
+          <li><a class="nav__enlace nav__enlace--destacado" href="crear.html">+ Publicar artículo</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor acceso">
+      <aside class="acceso__lateral" aria-label="Ventajas de ReMarket">
+        <h2>Da una segunda vida a lo que ya no usas</h2>
+        <ul>
+          <li>Publica gratis en un par de minutos</li>
+          <li>Solo un 5 % de comisión cuando vendes</li>
+          <li>Compra protegida y valoraciones de vendedores</li>
+        </ul>
+      </aside>
+
+      <section class="acceso__tarjeta" aria-labelledby="titulo-registro">
+        <h1 class="acceso__titulo" id="titulo-registro">Únete a la comunidad</h1>
+        <p class="acceso__texto">Compra, vende y da nueva vida a lo que tienes.</p>
+
+        <nav class="selector" aria-label="Elegir acceso">
+          <a href="login.html">Iniciar sesión</a>
+          <a href="registro.html" aria-current="page">Registrarse</a>
+        </nav>
+
+        <form class="formulario" id="form-registro" action="../index.html" method="post" novalidate>
+          <div class="campo">
+            <label class="campo__etiqueta" for="reg-nombre">Nombre completo <span class="campo__obligatorio">*</span></label>
+            <input class="input" type="text" id="reg-nombre" name="nombre" placeholder="Ana García" autocomplete="name" required>
+            <p class="campo__error" id="error-reg-nombre" aria-live="polite"></p>
+          </div>
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="reg-email">Correo electrónico <span class="campo__obligatorio">*</span></label>
+            <input class="input" type="email" id="reg-email" name="email" placeholder="tu@email.com" autocomplete="email" required>
+            <p class="campo__error" id="error-reg-email" aria-live="polite"></p>
+          </div>
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="reg-fecha">Fecha de nacimiento <span class="campo__obligatorio">*</span></label>
+            <input class="input" type="date" id="reg-fecha" name="fecha_nacimiento" required>
+            <p class="campo__ayuda">Tienes que tener al menos 18 años.</p>
+            <p class="campo__error" id="error-reg-fecha" aria-live="polite"></p>
+          </div>
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="reg-password">Contraseña <span class="campo__obligatorio">*</span></label>
+            <div class="input-grupo">
+              <input class="input" type="password" id="reg-password" name="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password" minlength="8" required>
+              <button class="input-grupo__boton" type="button" aria-label="Mostrar contraseña">Ver</button>
+            </div>
+            <ul class="requisitos" id="requisitos-password" aria-label="Requisitos de la contraseña">
+              <li data-requisito="longitud">Al menos 8 caracteres</li>
+              <li data-requisito="mayuscula">Una letra mayúscula</li>
+              <li data-requisito="numero">Un número</li>
+            </ul>
+            <p class="campo__error" id="error-reg-password" aria-live="polite"></p>
+          </div>
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="reg-password2">Repite la contraseña <span class="campo__obligatorio">*</span></label>
+            <input class="input" type="password" id="reg-password2" name="password2" autocomplete="new-password" required>
+            <p class="campo__error" id="error-reg-password2" aria-live="polite"></p>
+          </div>
+
+          <fieldset class="campo intereses">
+            <legend class="campo__etiqueta">¿Qué te interesa? <span class="campo__ayuda">(para recomendarte artículos)</span></legend>
+            <div class="opciones">
+              <label class="opcion-chip"><input type="checkbox" name="intereses" value="ropa"><span>Ropa</span></label>
+              <label class="opcion-chip"><input type="checkbox" name="intereses" value="zapatos"><span>Zapatos</span></label>
+              <label class="opcion-chip"><input type="checkbox" name="intereses" value="electrónica"><span>Electrónica</span></label>
+              <label class="opcion-chip"><input type="checkbox" name="intereses" value="bolsos"><span>Bolsos</span></label>
+              <label class="opcion-chip"><input type="checkbox" name="intereses" value="libros"><span>Libros</span></label>
+              <label class="opcion-chip"><input type="checkbox" name="intereses" value="deporte"><span>Deporte</span></label>
+              <label class="opcion-chip"><input type="checkbox" name="intereses" value="hogar"><span>Hogar</span></label>
+              <label class="opcion-chip"><input type="checkbox" name="intereses" value="juguetes"><span>Juguetes</span></label>
+            </div>
+          </fieldset>
+
+          <label class="casilla">
+            <input type="checkbox" name="terminos" required>
+            <span>Acepto los <a href="#">Términos de uso</a> y la <a href="#">Política de privacidad</a>.</span>
+          </label>
+          <p class="campo__error" id="error-reg-terminos" aria-live="polite"></p>
+
+          <button class="boton boton--primario boton--bloque" type="submit">Crear cuenta gratis</button>
+        </form>
+
+        <p class="separador">o continúa con</p>
+
+        <div class="acceso__sociales">
+          <button class="boton boton--secundario boton-social" type="button">Google</button>
+          <button class="boton boton--oscuro boton-social" type="button">Apple</button>
+        </div>
+
+        <p class="acceso__legal">Al continuar, aceptas nuestros <a href="#">Términos de uso</a> y la <a href="#">Política de privacidad</a>.</p>
+      </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie__contenido">
+      <div>
+        <a href="../index.html" class="logo">
+          <span class="logo__icono" aria-hidden="true">R</span>
+          <span>ReMarket</span>
+        </a>
+        <p>Compra, vende y da nueva vida a lo que ya no usas.</p>
+      </div>
+      <nav aria-label="Enlaces del pie">
+        <h2 class="pie__titulo">ReMarket</h2>
+        <ul class="pie__lista">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="crear.html">Vender un artículo</a></li>
+          <li><a href="registro.html">Crear cuenta</a></li>
+        </ul>
+      </nav>
+      <section>
+        <h2 class="pie__titulo">Ayuda</h2>
+        <ul class="pie__lista">
+          <li><a href="#">Cómo funciona</a></li>
+          <li><a href="#">Términos de uso</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </section>
+    </div>
+    <p class="pie__legal">© 2026 ReMarket · Proyecto Interdisciplinar 2 · Erik Moreno Pino</p>
+  </footer>
+
+  <!-- Scripts (con defer se ejecutan cuando el HTML ya está cargado) -->
+  <script src="../js/modal.js" defer></script>
+  <script src="../js/menu.js" defer></script>
+  <script src="../js/mockData.js" defer></script>
+  <script src="../js/validaciones.js" defer></script>
+  <script src="../js/registro.js" defer></script>
+</body>
+</html>

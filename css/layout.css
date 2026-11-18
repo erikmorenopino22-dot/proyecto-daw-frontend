@@ -1,0 +1,218 @@
+/* ==========================================================================
+   LAYOUT - Cabecera, navegación y pie (comunes a todas las páginas)
+   Mobile first: primero móvil y luego media queries para tablet y escritorio
+   ========================================================================== */
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+  background-color: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.cabecera__contenido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-3);
+  padding-block: var(--espacio-3);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  font-weight: 800;
+  font-size: var(--texto-lg);
+  letter-spacing: -0.03em;
+}
+
+.logo__icono {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.625rem;
+  background-color: var(--color-primario);
+  color: #fff;
+  font-size: var(--texto-base);
+}
+
+/* Botón hamburguesa (solo en móvil). En el Hito 2 se abre/cierra con JS */
+.boton-menu {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  background-color: var(--color-superficie);
+}
+
+/* ---------- Navegación ---------- */
+.nav {
+  display: none;            /* en móvil está escondida hasta pulsar el botón */
+  flex-basis: 100%;
+}
+
+.nav.abierto {
+  display: block;
+}
+
+.nav__lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+  padding-top: var(--espacio-2);
+}
+
+.nav__enlace {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  padding: var(--espacio-3) var(--espacio-3);
+  border-radius: var(--radio-md);
+  font-weight: 600;
+  color: var(--color-texto-suave);
+}
+
+.nav__enlace:hover,
+.nav__enlace[aria-current="page"] {
+  background-color: var(--color-primario-claro);
+  color: var(--color-primario-oscuro);
+}
+
+.nav__enlace--destacado {
+  background-color: var(--color-primario-oscuro);
+  color: #fff;
+}
+
+.nav__enlace--destacado:hover {
+  background-color: var(--color-primario-oscuro);
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* ---------- Buscador de la cabecera ---------- */
+.buscador {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  flex-basis: 100%;
+  order: 3;                  /* en móvil va debajo del logo */
+  padding: var(--espacio-2) var(--espacio-3);
+  background-color: var(--color-fondo);
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  color: var(--color-texto-suave);
+}
+
+.buscador:focus-within {
+  border-color: var(--color-primario);
+}
+
+.buscador input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: var(--texto-sm);
+  color: var(--color-texto);
+}
+
+.buscador input::placeholder {
+  color: var(--color-placeholder);
+}
+
+/* ---------- Pie de página ---------- */
+.pie {
+  margin-top: var(--espacio-7);
+  background-color: var(--color-texto);
+  color: #d6d3cd;
+  font-size: var(--texto-sm);
+}
+
+.pie__contenido {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espacio-5);
+  padding-block: var(--espacio-6);
+}
+
+.pie .logo {
+  color: #fff;
+  margin-bottom: var(--espacio-2);
+}
+
+.pie__titulo {
+  color: #fff;
+  font-size: var(--texto-sm);
+  margin-bottom: var(--espacio-2);
+}
+
+.pie__lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+}
+
+.pie__lista a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.pie__legal {
+  border-top: 1px solid #3a3934;
+  padding-block: var(--espacio-4);
+  text-align: center;
+  font-size: var(--texto-xs);
+}
+
+/* ==========================================================================
+   TABLET (768px o más)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .pie__contenido {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+/* ==========================================================================
+   ESCRITORIO (1024px o más): la navegación se ve siempre en la cabecera
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .cabecera__contenido {
+    flex-wrap: nowrap;
+    gap: var(--espacio-5);
+  }
+
+  .boton-menu {
+    display: none;
+  }
+
+  .nav {
+    display: block;
+    flex-basis: auto;
+  }
+
+  .nav__lista {
+    flex-direction: row;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .nav__enlace {
+    padding: var(--espacio-2) var(--espacio-3);
+    font-size: var(--texto-sm);
+  }
+
+  .buscador {
+    order: 0;
+    flex: 1;
+    max-width: 32rem;
+  }
+}

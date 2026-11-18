@@ -1,0 +1,56 @@
+/* ==========================================================================
+   VARIABLES - Guía de estilos sacada del prototipo de Figma (ReMarket)
+   ========================================================================== */
+
+:root {
+  /* Colores de marca */
+  --color-primario: #ff5433;          /* naranja de ReMarket (logo, detalles) */
+  --color-primario-oscuro: #d63a1c;   /* botones: contraste 4,7:1 con blanco */
+  --color-primario-claro: #fff0ed;    /* fondos de chips y opciones marcadas */
+
+  /* Colores neutros */
+  --color-fondo: #f8f7f4;
+  --color-superficie: #ffffff;
+  --color-panel: #f2f0eb;
+  --color-borde: #e8e5df;
+  --color-texto: #1c1b18;
+  --color-texto-suave: #6b6760;       /* gris más oscuro que en Figma para cumplir WCAG AA */
+  --color-placeholder: #8c8880;
+
+  /* Colores de estado */
+  --color-exito: #1b7a50;
+  --color-exito-claro: #e8f8f1;
+  --color-aviso: #b45309;
+  --color-error: #c2412d;
+  --color-error-claro: #fff0ed;
+
+  /* Tipografía */
+  --fuente-principal: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --texto-xs: 0.75rem;   /* 12px */
+  --texto-sm: 0.875rem;  /* 14px */
+  --texto-base: 1rem;    /* 16px */
+  --texto-lg: 1.25rem;   /* 20px */
+  --texto-xl: 1.625rem;  /* 26px */
+  --texto-xxl: 2rem;     /* 32px */
+
+  /* Espaciados (escala de 4px) */
+  --espacio-1: 0.25rem;
+  --espacio-2: 0.5rem;
+  --espacio-3: 0.75rem;
+  --espacio-4: 1rem;
+  --espacio-5: 1.5rem;
+  --espacio-6: 2rem;
+  --espacio-7: 3rem;
+
+  /* Bordes y sombras */
+  --radio-sm: 0.5rem;
+  --radio-md: 0.75rem;
+  --radio-lg: 1rem;
+  --radio-pill: 999px;
+  --sombra-boton: 0 4px 16px rgba(255, 84, 51, 0.25);
+  --sombra-tarjeta: 0 2px 10px rgba(0, 0, 0, 0.06);
+
+  /* Anchos máximos */
+  --ancho-max: 1200px;
+  --ancho-formulario: 720px;
+}

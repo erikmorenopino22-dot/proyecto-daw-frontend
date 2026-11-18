@@ -1,0 +1,684 @@
+/* ==========================================================================
+   COMPONENTES - Piezas que se repiten en varias páginas
+   ========================================================================== */
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-2);
+  padding: 0.875rem var(--espacio-5);
+  border: 1.5px solid transparent;
+  border-radius: var(--radio-md);
+  font-weight: 700;
+  font-size: var(--texto-base);
+  white-space: nowrap;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.boton--primario {
+  background-color: var(--color-primario-oscuro);
+  color: #fff;
+  box-shadow: var(--sombra-boton);
+}
+
+.boton--primario:hover {
+  opacity: 0.9;
+}
+
+.boton--secundario {
+  background-color: var(--color-superficie);
+  border-color: var(--color-borde);
+  color: var(--color-texto);
+}
+
+.boton--secundario:hover {
+  border-color: var(--color-texto-suave);
+}
+
+.boton--oscuro {
+  background-color: var(--color-texto);
+  color: #fff;
+}
+
+.boton--bloque {
+  width: 100%;
+}
+
+.boton--pequeno {
+  padding: var(--espacio-2) var(--espacio-4);
+  font-size: var(--texto-sm);
+  border-radius: 0.625rem;
+}
+
+/* ---------- Chips de categoría (filtro del inicio) ---------- */
+.chips {
+  display: flex;
+  gap: var(--espacio-2);
+  overflow-x: auto;
+  padding-bottom: var(--espacio-2);
+  scrollbar-width: none;
+}
+
+.chip {
+  flex-shrink: 0;
+  padding: 0.4375rem 0.875rem;
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio-pill);
+  background-color: var(--color-superficie);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  border-color: var(--color-primario);
+}
+
+.chip--activo {
+  background-color: var(--color-primario-oscuro);
+  border-color: var(--color-primario-oscuro);
+  color: #fff;
+}
+
+/* ---------- Tarjeta de artículo ---------- */
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-lg);
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.tarjeta:hover {
+  box-shadow: var(--sombra-tarjeta);
+  transform: translateY(-2px);
+}
+
+/* La foto, la etiqueta y el corazón se colocan en la misma celda del grid
+   (así no hace falta position: absolute) */
+.tarjeta__media {
+  display: grid;
+  aspect-ratio: 3 / 4;
+  background-color: var(--color-panel);
+}
+
+.tarjeta__media > * {
+  grid-area: 1 / 1;
+}
+
+.tarjeta__imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tarjeta__etiqueta {
+  align-self: start;
+  justify-self: start;
+  margin: var(--espacio-2);
+  padding: 0.1875rem 0.4375rem;
+  border-radius: 0.375rem;
+  background-color: var(--color-exito);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.tarjeta__favorito {
+  align-self: start;
+  justify-self: end;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin: var(--espacio-2);
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--color-texto-suave);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.tarjeta__favorito[aria-pressed="true"] {
+  color: var(--color-primario);
+}
+
+.tarjeta__cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: var(--espacio-3) var(--espacio-3) var(--espacio-3);
+  flex: 1;
+}
+
+.tarjeta__titulo {
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.tarjeta__titulo a::after {
+  content: "";
+}
+
+.tarjeta__info {
+  font-size: var(--texto-xs);
+  color: var(--color-texto-suave);
+}
+
+.tarjeta__pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--espacio-2);
+}
+
+.tarjeta__precio {
+  font-size: var(--texto-base);
+  font-weight: 700;
+}
+
+.tarjeta__likes {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-1);
+  font-size: var(--texto-xs);
+  color: var(--color-texto-suave);
+}
+
+/* ---------- Formularios ---------- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.campo__etiqueta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.campo__obligatorio {
+  color: var(--color-primario-oscuro);
+}
+
+.campo__ayuda {
+  font-size: var(--texto-xs);
+  color: var(--color-texto-suave);
+}
+
+/* Aquí se pondrán los mensajes de error con JS en el Hito 2 */
+.campo__error {
+  font-size: var(--texto-xs);
+  color: var(--color-error);
+  font-weight: 500;
+}
+
+/* Si no hay error, el párrafo no ocupa sitio */
+.campo__error:empty {
+  display: none;
+}
+
+.input {
+  width: 100%;
+  padding: 0.8125rem var(--espacio-4);
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  background-color: var(--color-superficie);
+  font-size: var(--texto-base);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input::placeholder {
+  color: var(--color-placeholder);
+}
+
+.input:focus {
+  border-color: var(--color-primario);
+}
+
+.input--error {
+  border-color: var(--color-error);
+}
+
+.input--correcto {
+  border-color: var(--color-exito);
+}
+
+textarea.input {
+  resize: vertical;
+  min-height: 7rem;
+}
+
+select.input {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--color-texto-suave) 50%),
+    linear-gradient(135deg, var(--color-texto-suave) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+/* Input con texto delante (por ejemplo el símbolo €) */
+.input-grupo {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  background-color: var(--color-superficie);
+  overflow: hidden;
+}
+
+.input-grupo:focus-within {
+  border-color: var(--color-primario);
+}
+
+.input-grupo__prefijo {
+  padding-left: var(--espacio-4);
+  font-weight: 700;
+}
+
+.input-grupo .input {
+  border: none;
+}
+
+/* Contraseña con botón de "Ver" al lado */
+.input-grupo__boton {
+  border: none;
+  background: none;
+  padding-inline: var(--espacio-4);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* Opciones en forma de pastilla (radio / checkbox) */
+.opciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+  border: none;
+}
+
+/* El radio/checkbox real se oculta y se ve solo la pastilla (span) */
+.opcion-chip input {
+  appearance: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  opacity: 0;
+}
+
+.opcion-chip span {
+  display: inline-block;
+  padding: var(--espacio-2) 0.875rem;
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio-pill);
+  background-color: var(--color-superficie);
+  color: var(--color-texto-suave);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.opcion-chip input:checked + span {
+  border-color: var(--color-primario-oscuro);
+  background-color: var(--color-primario-claro);
+  color: var(--color-primario-oscuro);
+}
+
+.opcion-chip input:focus-visible + span {
+  outline: 3px solid var(--color-primario);
+  outline-offset: 2px;
+}
+
+/* Casilla normal (acepto términos, recordarme...) */
+.casilla {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espacio-2);
+  font-size: var(--texto-sm);
+  color: var(--color-texto-suave);
+}
+
+.casilla input {
+  margin-top: 0.2rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--color-primario-oscuro);
+}
+
+.casilla a {
+  color: var(--color-texto);
+  text-decoration: underline;
+}
+
+/* ---------- Etiquetas (#tags y estado) ---------- */
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.etiqueta {
+  padding: var(--espacio-1) 0.625rem;
+  border-radius: 0.375rem;
+  background-color: var(--color-panel);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-xs);
+  font-weight: 500;
+}
+
+.etiqueta--estado {
+  background-color: #fef3c7;
+  color: var(--color-aviso);
+  font-weight: 600;
+}
+
+/* ---------- Avatar ---------- */
+.avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #a8e87c;
+  color: var(--color-texto);
+  font-weight: 700;
+}
+
+/* ---------- Valoración con estrellas ---------- */
+.valoracion {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-1);
+  font-size: var(--texto-sm);
+}
+
+.valoracion svg {
+  color: var(--color-primario);
+}
+
+
+/* ==========================================================================
+   HITO 2 - Estilos para lo que se crea o se cambia con JavaScript
+   ========================================================================== */
+
+/* ---------- Estado de error en campos con botón o prefijo ---------- */
+.input-grupo:has(.input--error) {
+  border-color: var(--color-error);
+}
+
+.input-grupo:has(.input--correcto) {
+  border-color: var(--color-exito);
+}
+
+.input-grupo .input--error,
+.input-grupo .input--correcto {
+  border: none;
+}
+
+/* Contador de caracteres cerca del límite */
+.campo__ayuda--limite {
+  color: var(--color-aviso);
+  font-weight: 600;
+}
+
+/* ---------- Requisitos de la contraseña (registro) ---------- */
+.requisitos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-1) var(--espacio-3);
+  font-size: var(--texto-xs);
+  color: var(--color-texto-suave);
+}
+
+.requisitos li::before {
+  content: "○ ";
+}
+
+.requisitos li.cumplido {
+  color: var(--color-exito);
+  font-weight: 600;
+}
+
+.requisitos li.cumplido::before {
+  content: "✓ ";
+}
+
+/* ---------- Sin resultados (buscador) ---------- */
+.sin-resultados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-2);
+  padding: var(--espacio-7) var(--espacio-4);
+  text-align: center;
+  color: var(--color-texto-suave);
+}
+
+.sin-resultados__titulo {
+  font-size: var(--texto-lg);
+  font-weight: 700;
+  color: var(--color-texto);
+}
+
+.sin-resultados .boton {
+  margin-top: var(--espacio-3);
+}
+
+/* ---------- Corazón de la ficha del producto ---------- */
+.producto__favorito {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-1);
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.producto__favorito[aria-pressed="true"] {
+  color: var(--color-primario-oscuro);
+  font-weight: 600;
+}
+
+.producto__propio {
+  grid-column: 1 / -1;
+  padding: var(--espacio-3);
+  border-radius: var(--radio-md);
+  background-color: var(--color-panel);
+  text-align: center;
+  font-weight: 600;
+}
+
+/* ---------- Botón hamburguesa abierto ---------- */
+.boton-menu--abierto {
+  background-color: var(--color-primario-claro);
+  border-color: var(--color-primario);
+}
+
+/* ==========================================================================
+   MODAL (<dialog>)
+   ========================================================================== */
+.modal {
+  width: min(28rem, calc(100% - 2rem));
+  max-height: calc(100% - 2rem);
+  margin: auto;
+  padding: var(--espacio-5);
+  border: none;
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie);
+  color: var(--color-texto);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.modal::backdrop {
+  background-color: rgba(28, 27, 24, 0.55);
+}
+
+.modal[open] {
+  animation: aparecer 0.2s ease-out;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal__cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--espacio-3);
+  margin-bottom: var(--espacio-3);
+}
+
+.modal__titulo {
+  font-size: var(--texto-lg);
+}
+
+.modal__cerrar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-panel);
+  font-size: var(--texto-lg);
+  line-height: 1;
+}
+
+.modal__cuerpo {
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+.modal__cuerpo .campo__etiqueta {
+  color: var(--color-texto);
+}
+
+.modal__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--espacio-2);
+  margin-top: var(--espacio-5);
+}
+
+.modal__acciones .boton {
+  flex: 1;
+}
+
+/* Modal de éxito / aviso: icono redondo y todo centrado */
+.modal--centrado .modal__cabecera {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.modal--centrado .modal__cerrar {
+  display: none;
+}
+
+.modal--centrado .modal__cuerpo {
+  text-align: center;
+}
+
+.modal__icono {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  font-size: var(--texto-xl);
+  font-weight: 800;
+}
+
+.modal__icono--exito {
+  background-color: var(--color-exito-claro);
+  color: var(--color-exito);
+}
+
+.modal__icono--aviso {
+  background-color: #fef3c7;
+  color: var(--color-aviso);
+}
+
+/* Ofertas rápidas */
+.sugerencias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+}
+
+/* Resumen de la compra */
+.resumen {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--espacio-2) var(--espacio-4);
+  padding: var(--espacio-4);
+  border-radius: var(--radio-md);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+.resumen dd {
+  text-align: right;
+}
+
+.resumen__total {
+  padding-top: var(--espacio-2);
+  border-top: 1px solid var(--color-borde);
+  font-weight: 700;
+  font-size: var(--texto-base);
+}
+
+/* ==========================================================================
+   TOAST (aviso pequeño abajo)
+   ========================================================================== */
+.toasts {
+  position: fixed;
+  bottom: var(--espacio-5);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-2);
+  width: max-content;
+  max-width: calc(100% - 2rem);
+}
+
+.toast {
+  padding: var(--espacio-3) var(--espacio-5);
+  border-radius: var(--radio-pill);
+  background-color: var(--color-texto);
+  color: #fff;
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  animation: aparecer 0.2s ease-out;
+  transition: opacity 0.4s;
+}
+
+.toast--saliendo {
+  opacity: 0;
+}

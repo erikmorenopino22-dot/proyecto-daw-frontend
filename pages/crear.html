@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Publica un artículo de segunda mano en ReMarket.">
+  <title>Publicar artículo · ReMarket</title>
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png">
+
+  <!-- Fuente del prototipo de Figma -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+  <!-- Hojas de estilo (orden: variables > base > layout > componentes > páginas) -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor cabecera__contenido">
+      <a href="../index.html" class="logo" aria-label="ReMarket, ir al inicio">
+        <span class="logo__icono" aria-hidden="true">R</span>
+        <span>ReMarket</span>
+      </a>
+
+      <button class="boton-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <nav class="nav" id="menu-principal" aria-label="Menú principal">
+        <ul class="nav__lista">
+          <li><a class="nav__enlace" href="../index.html">Inicio</a></li>
+          <li><a class="nav__enlace" href="login.html">Iniciar sesión</a></li>
+          <li><a class="nav__enlace" href="registro.html">Registrarse</a></li>
+          <li><a class="nav__enlace nav__enlace--destacado" href="crear.html" aria-current="page">+ Publicar artículo</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor publicar">
+    <header class="publicar__cabecera">
+      <a class="boton-volver" href="../index.html" aria-label="Volver al inicio"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></a>
+      <div>
+        <h1 class="publicar__titulo">Publicar artículo</h1>
+        <p class="publicar__subtitulo">Llega a millones de compradores</p>
+      </div>
+    </header>
+
+    <form class="formulario" id="form-publicar" action="detalle.html" method="post" enctype="multipart/form-data" novalidate>
+      <fieldset class="bloque">
+        <legend>Fotos <span class="campo__ayuda">(máximo 4)</span></legend>
+        <div class="fotos">
+            <label class="fotos__hueco">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <span>Principal</span>
+              <input type="file" name="foto1" accept="image/*">
+            </label>
+            <label class="fotos__hueco">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <span>Foto 2</span>
+              <input type="file" name="foto2" accept="image/*">
+            </label>
+            <label class="fotos__hueco">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <span>Foto 3</span>
+              <input type="file" name="foto3" accept="image/*">
+            </label>
+            <label class="fotos__hueco">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <span>Foto 4</span>
+              <input type="file" name="foto4" accept="image/*">
+            </label>
+        </div>
+        <p class="campo__error" id="error-fotos" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="bloque">
+        <legend>Información del artículo</legend>
+
+        <div class="campo">
+          <label class="campo__etiqueta" for="titulo">Título <span class="campo__obligatorio">*</span></label>
+          <input class="input" type="text" id="titulo" name="titulo" placeholder="ej. Chaqueta de cuero negra Zara" maxlength="60" required>
+          <p class="campo__ayuda" id="contador-titulo">0/60 caracteres</p>
+          <p class="campo__error" id="error-titulo" aria-live="polite"></p>
+        </div>
+
+        <div class="dos-columnas">
+          <div class="campo">
+            <label class="campo__etiqueta" for="marca">Marca</label>
+            <input class="input" type="text" id="marca" name="marca" placeholder="Zara, Nike...">
+          </div>
+          <div class="campo">
+            <label class="campo__etiqueta" for="talla">Talla / Tamaño</label>
+            <input class="input" type="text" id="talla" name="talla" placeholder="M, 42, XL...">
+          </div>
+        </div>
+
+        <div class="campo">
+          <label class="campo__etiqueta" for="descripcion">Descripción</label>
+          <textarea class="input" id="descripcion" name="descripcion" rows="4" maxlength="500" placeholder="Describe el artículo: estado, medidas, por qué lo vendes..."></textarea>
+          <p class="campo__ayuda" id="contador-descripcion">0/500 caracteres</p>
+          <p class="campo__error" id="error-descripcion" aria-live="polite"></p>
+        </div>
+      </fieldset>
+
+      <fieldset class="bloque">
+        <legend>Categoría <span class="campo__obligatorio">*</span></legend>
+        <div class="opciones">
+            <label class="opcion-chip"><input type="radio" name="categoria" value="ropa" required><span>Ropa</span></label>
+            <label class="opcion-chip"><input type="radio" name="categoria" value="zapatos" required><span>Zapatos</span></label>
+            <label class="opcion-chip"><input type="radio" name="categoria" value="bolsos" required><span>Bolsos</span></label>
+            <label class="opcion-chip"><input type="radio" name="categoria" value="electrónica" required><span>Electrónica</span></label>
+            <label class="opcion-chip"><input type="radio" name="categoria" value="deporte" required><span>Deporte</span></label>
+            <label class="opcion-chip"><input type="radio" name="categoria" value="libros" required><span>Libros</span></label>
+            <label class="opcion-chip"><input type="radio" name="categoria" value="hogar" required><span>Hogar</span></label>
+            <label class="opcion-chip"><input type="radio" name="categoria" value="juguetes" required><span>Juguetes</span></label>
+            <label class="opcion-chip"><input type="radio" name="categoria" value="otro" required><span>Otro</span></label>
+        </div>
+        <p class="campo__error" id="error-categoria" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="bloque">
+        <legend>Estado <span class="campo__obligatorio">*</span></legend>
+        <div class="estados">
+            <label class="estado">
+              <span>
+                <span class="estado__nombre">Nuevo con etiqueta</span>
+                <span class="estado__desc">Nunca usado, con la etiqueta original</span>
+              </span>
+              <input type="radio" name="estado" value="nuevo" required>
+            </label>
+            <label class="estado">
+              <span>
+                <span class="estado__nombre">Como nuevo</span>
+                <span class="estado__desc">Usado una o dos veces, sin defectos</span>
+              </span>
+              <input type="radio" name="estado" value="como-nuevo" required>
+            </label>
+            <label class="estado">
+              <span>
+                <span class="estado__nombre">Buen estado</span>
+                <span class="estado__desc">Usado pero bien cuidado</span>
+              </span>
+              <input type="radio" name="estado" value="buen-estado" required>
+            </label>
+            <label class="estado">
+              <span>
+                <span class="estado__nombre">Aceptable</span>
+                <span class="estado__desc">Se nota el uso, pero funciona bien</span>
+              </span>
+              <input type="radio" name="estado" value="aceptable" required>
+            </label>
+        </div>
+        <p class="campo__error" id="error-estado" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset class="bloque">
+        <legend>Precio y ubicación</legend>
+        <div class="dos-columnas">
+          <div class="campo">
+            <label class="campo__etiqueta" for="precio">Precio <span class="campo__obligatorio">*</span></label>
+            <div class="input-grupo">
+              <span class="input-grupo__prefijo" aria-hidden="true">€</span>
+              <input class="input" type="number" id="precio" name="precio" placeholder="0,00" min="1" step="0.01" required>
+            </div>
+            <p class="aviso-comision" id="aviso-comision">Recibirás el precio menos un 5 % de comisión.</p>
+            <p class="campo__error" id="error-precio" aria-live="polite"></p>
+          </div>
+          <div class="campo">
+            <label class="campo__etiqueta" for="ubicacion">Ubicación</label>
+            <input class="input" type="text" id="ubicacion" name="ubicacion" placeholder="Madrid, Barcelona...">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="publicar__acciones">
+        <a class="boton boton--secundario" href="../index.html" id="cancelar-publicar">Cancelar</a>
+        <button class="boton boton--primario" type="submit">Publicar artículo</button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie__contenido">
+      <div>
+        <a href="../index.html" class="logo">
+          <span class="logo__icono" aria-hidden="true">R</span>
+          <span>ReMarket</span>
+        </a>
+        <p>Compra, vende y da nueva vida a lo que ya no usas.</p>
+      </div>
+      <nav aria-label="Enlaces del pie">
+        <h2 class="pie__titulo">ReMarket</h2>
+        <ul class="pie__lista">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="crear.html">Vender un artículo</a></li>
+          <li><a href="registro.html">Crear cuenta</a></li>
+        </ul>
+      </nav>
+      <section>
+        <h2 class="pie__titulo">Ayuda</h2>
+        <ul class="pie__lista">
+          <li><a href="#">Cómo funciona</a></li>
+          <li><a href="#">Términos de uso</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </section>
+    </div>
+    <p class="pie__legal">© 2026 ReMarket · Proyecto Interdisciplinar 2 · Erik Moreno Pino</p>
+  </footer>
+
+  <!-- Scripts (con defer se ejecutan cuando el HTML ya está cargado) -->
+  <script src="../js/modal.js" defer></script>
+  <script src="../js/menu.js" defer></script>
+  <script src="../js/mockData.js" defer></script>
+  <script src="../js/productos.js" defer></script>
+  <script src="../js/validaciones.js" defer></script>
+  <script src="../js/crear.js" defer></script>
+</body>
+</html>
